@@ -38,8 +38,8 @@ class BusinessSignUp : AppCompatActivity() {
     lateinit var etConfirmPassword: EditText
     lateinit var rlRegister: RelativeLayout
     private val fAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    lateinit var rootNode: FirebaseDatabase
-    lateinit var reference: DatabaseReference
+    lateinit var rootNode1: FirebaseDatabase
+    lateinit var reference1: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,11 +81,11 @@ class BusinessSignUp : AppCompatActivity() {
 
         btnBusinessRegister.setOnClickListener {
 
-          rootNode = FirebaseDatabase.getInstance()
-            reference = rootNode.getReference("users");
+          rootNode1 = FirebaseDatabase.getInstance()
+            reference1 = rootNode1.getReference("users");
 
 
-            /*val firstName: String = etName.getText().toString()
+            val firstName: String = etName.getText().toString()
             val email : String = etEmail.getText().toString()
             val address: String = etAddress.getText().toString()
             val phoneNumber: String = etPhoneNumber.getText().toString()
@@ -107,12 +107,12 @@ class BusinessSignUp : AppCompatActivity() {
 
 
             val personalDetails = User(firstName,lastName,phoneNumber, email,password)
-            reference.child(phoneNumber).setValue(personalDetails)
+            reference1.child(phoneNumber).setValue(personalDetails)
            val shopDetails = User(shopName, shopType,
                 openTime,closeTime, phoneNumber )
-            reference.child(phoneNumber).setValue(shopDetails )
+            reference1.child(phoneNumber).setValue(shopDetails )
             val addressDetails = User( address,  phoneNumber,pinCode,city, state,)
-            reference.child(phoneNumber).setValue(addressDetails)*/
+            reference1.child(phoneNumber).setValue(addressDetails)
 
             signUpUser()
 
