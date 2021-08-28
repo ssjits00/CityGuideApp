@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.FirebaseApp
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -16,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 class BusinessSignUp : AppCompatActivity() {
 
 
-    private lateinit var database : DatabaseReference
+    private lateinit var database: DatabaseReference
     lateinit var toolbar: Toolbar
     lateinit var btnBusinessRegister: Button
     lateinit var etName: EditText
@@ -38,13 +39,18 @@ class BusinessSignUp : AppCompatActivity() {
     lateinit var etConfirmPassword: EditText
     lateinit var rlRegister: RelativeLayout
     private val fAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    lateinit var rootNode1: FirebaseDatabase
-    lateinit var reference1: DatabaseReference
+    lateinit var rootNode: FirebaseDatabase
+    lateinit var reference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_business_sign_up)
+
+        //  if(!FirebaseApp.getApps(this).isEmpty()) {
+        //     FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //   }
+
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Register Yourself"
@@ -53,14 +59,18 @@ class BusinessSignUp : AppCompatActivity() {
         val languages = resources.getStringArray(R.array.Languages)
         val spinner = findViewById<Spinner>(R.id.spinner)
         if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, languages)
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item, languages
+            )
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
 
                 }
 
@@ -81,40 +91,46 @@ class BusinessSignUp : AppCompatActivity() {
 
         btnBusinessRegister.setOnClickListener {
 
-          rootNode1 = FirebaseDatabase.getInstance()
-            reference1 = rootNode1.getReference("users");
+
+           /* rootNode = FirebaseDatabase.getInstance()
+           reference = rootNode.getReference("businessuser");
 
 
-            val firstName: String = etName.getText().toString()
-            val email : String = etEmail.getText().toString()
-            val address: String = etAddress.getText().toString()
-            val phoneNumber: String = etPhoneNumber.getText().toString()
-            val password: String = etPassword.getText().toString()
-
+           val firstName: String = etName.getText().toString()
             val lastName: String = etLastName.getText().toString()
-            val shopType: String = etShopType.getText().toString()
             val shopName: String = etShopName.getText().toString()
-            val openTime: String = txtOpenTime.getText().toString()
-            val closeTime: String = txtCloseTime.getText().toString()
-
-            val state:  String = etState.getText().toString()
-            val country: String = etCountry.getText().toString()
-            val pinCode: String = etPinCode.getText().toString()
-            val city: String = etCity.getText().toString()
+            val email : String = etEmail.getText().toString()
+            val openTime: String = txtOpenTime.getText().toString()*/
 
 
+              rootNode = FirebaseDatabase.getInstance()
+    reference = rootNode.getReference("BusinessUsers");
+
+
+    val name: String = etName.getText().toString()
+    val email: String = etEmail.getText().toString()
+    val address: String = etAddress.getText().toString()
+    val phoneNo: String = etPhoneNumber.getText().toString()
+    val password: String = etPassword.getText().toString()
 
 
 
-            val personalDetails = User(firstName,lastName,phoneNumber, email,password)
-            reference1.child(phoneNumber).setValue(personalDetails)
-           val shopDetails = User(shopName, shopType,
+    val helperClass = BusinessUser(name, address, email, phoneNo,password)
+    reference.child(phoneNo).setValue(helperClass)
+
+
+
+
+           /*val personalDetails = BusinessUser(firstName, lastName, shopName, email, openTime)
+            reference.child(email).setValue(personalDetails)
+             val shopDetails = BusinessUser(shopName, shopType,
                 openTime,closeTime, phoneNumber )
             reference1.child(phoneNumber).setValue(shopDetails )
-            val addressDetails = User( address,  phoneNumber,pinCode,city, state,)
-            reference1.child(phoneNumber).setValue(addressDetails)
+            val addressDetails = BusinessUser( address,  phoneNumber,pinCode,city, state,)
+            reference1.child(phoneNumber).setValue(addressDetails)*/
 
             signUpUser()
+
 
         }
     }

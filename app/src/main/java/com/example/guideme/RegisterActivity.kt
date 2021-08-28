@@ -78,6 +78,7 @@ btnRegistration.setOnClickListener {
     val password: String = etPassword.getText().toString()
 
 
+
     val helperClass = User(name, address, email, phoneNo,password)
     reference.child(phoneNo).setValue(helperClass)
 signUpUser()
