@@ -10,8 +10,6 @@ import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import com.example.guideme.DashboardActivity
-import com.example.guideme.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -76,10 +74,11 @@ btnRegistration.setOnClickListener {
     val address: String = etAddress.getText().toString()
     val phoneNo: String = etPhoneNumber.getText().toString()
     val password: String = etPassword.getText().toString()
+    val confirmPassword: String = etConfirmPassword.getText().toString()
 
 
 
-    val helperClass = User(name, address, email, phoneNo,password)
+    val helperClass = User(name, address, email, phoneNo,password,confirmPassword)
     reference.child(phoneNo).setValue(helperClass)
 signUpUser()
 /*val intent = Intent(this@RegisterActivity, DashboardActivity::class.java)

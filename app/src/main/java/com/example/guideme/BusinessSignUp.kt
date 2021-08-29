@@ -1,5 +1,6 @@
 package com.example.guideme
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,12 +23,13 @@ class BusinessSignUp : AppCompatActivity() {
     lateinit var btnBusinessRegister: Button
     lateinit var etName: EditText
     lateinit var etShopName: EditText
-    lateinit var etShopType: EditText
+    lateinit var spinner1: Spinner
     lateinit var etPinCode: EditText
     lateinit var etCountry: EditText
     lateinit var etCity: EditText
     lateinit var etState: EditText
     lateinit var txtOpenTime: EditText
+    lateinit var etServicesOffered: EditText
     lateinit var txtCloseTime: EditText
 
     lateinit var etLastName: EditText
@@ -42,6 +44,7 @@ class BusinessSignUp : AppCompatActivity() {
     lateinit var rootNode: FirebaseDatabase
     lateinit var reference: DatabaseReference
 
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,6 +90,17 @@ class BusinessSignUp : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
         etAddress = findViewById(R.id.etAddress)
+        etServicesOffered = findViewById(R.id.etServicesOffered)
+        etLastName = findViewById(R.id.etLastName)
+        etShopName = findViewById(R.id.etShopName)
+        txtOpenTime = findViewById(R.id.txtOpenTime)
+        txtCloseTime = findViewById(R.id.txtCloseTime)
+        spinner1 = findViewById(R.id.spinner)
+        etPinCode = findViewById(R.id.etPinCode)
+        etCity = findViewById(R.id.etCity)
+        etState = findViewById(R.id.etState)
+        etCountry = findViewById(R.id.etCountry)
+
         btnBusinessRegister = findViewById(R.id.btnRegister)
 
         btnBusinessRegister.setOnClickListener {
@@ -107,16 +121,32 @@ class BusinessSignUp : AppCompatActivity() {
     reference = rootNode.getReference("BusinessUsers");
 
 
-    val name: String = etName.getText().toString()
-    val email: String = etEmail.getText().toString()
-    val address: String = etAddress.getText().toString()
-    val phoneNo: String = etPhoneNumber.getText().toString()
-    val password: String = etPassword.getText().toString()
+            val firstName: String = etName.getText().toString()
+            val email : String = etEmail.getText().toString()
+            val address: String = etAddress.getText().toString()
+            val mobileNumber: String = etPhoneNumber.getText().toString()
+            val password: String = etPassword.getText().toString()
+
+            val lastName: String = etLastName.getText().toString()
+          val servicesOffered: String = etServicesOffered.getText().toString()
+            val shopName: String = etShopName.getText().toString()
+            val openTime: String = txtOpenTime.getText().toString()
+            val closeTime: String = txtCloseTime.getText().toString()
+
+            val state:  String = etState.getText().toString()
+            val country: String = etCountry.getText().toString()
+            val pincode: String = etPinCode.getText().toString()
+            val city: String = etCity.getText().toString()
 
 
 
-    val helperClass = BusinessUser(name, address, email, phoneNo,password)
-    reference.child(phoneNo).setValue(helperClass)
+
+
+            val helperClass = BusinessUser(firstName, lastName, shopName,email, openTime,
+            closeTime,address, servicesOffered , mobileNumber ,pincode, city, state, country, password)
+    reference.child(mobileNumber).setValue(helperClass)
+           // val helperClass1 = BusinessUser2(openTime, closeTime, city, country, state )
+         //   reference.child(phoneNo).setValue(helperClass1)
 
 
 
