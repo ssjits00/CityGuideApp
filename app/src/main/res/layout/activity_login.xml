@@ -72,20 +72,19 @@
         android:textColor="@android:color/black"
         android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/googleSignIn"
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#0000FF"
-        android:text="Google"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"/>
+
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/google"
+            android:background="#CFEBFF"
+
+
+
+            android:id="@+id/googleSignIn"
+            ></ImageButton>
 
 
     <RelativeLayout
@@ -96,7 +95,7 @@
             android:id="@+id/txtRegisterYourself"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+           android:layout_marginTop="50dp"
             android:layout_centerHorizontal="true"
             android:background="@color/colorPrimary"
             android:clickable="true"
@@ -106,8 +105,23 @@
             android:text="@string/register_yourself"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/black"
-            android:layout_marginBottom="50dp"
+
             android:gravity="center_horizontal" />
+
+
+        <TextView
+            android:id="@+id/txtAdminLogin"
+            android:layout_below="@id/txtRegisterYourself"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as Admin"
+
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"/>
 
     </RelativeLayout>
 </LinearLayout>

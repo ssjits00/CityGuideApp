@@ -3,10 +3,18 @@ package com.example.guideme
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 
+import android.view.MenuItem
+import android.widget.FrameLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
+import com.example.guideme.ProfileFragment
 import com.example.guideme.R
+import com.example.guideme.AboutAppFragment
+import com.example.guideme.DashboardFragment
+import com.example.guideme.FavouritesFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -15,70 +23,147 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class DashboardActivity : AppCompatActivity() {
+    lateinit var drawerLayout : androidx.drawerlayout.widget.DrawerLayout
+    lateinit var coordinatorLayout: CoordinatorLayout
+    lateinit var frame :FrameLayout
+    lateinit var toolbar : androidx.appcompat.widget.Toolbar
+    lateinit var navigationView : NavigationView
 
-    /*Declaring the textview used for displaying the data*/
-    lateinit var txtData: TextView
-    lateinit var btnSignOut: Button
     private lateinit var auth: FirebaseAuth
     lateinit var gso: GoogleSignInOptions
     private var mGoogleSignInClient: GoogleSignInClient? = null
 
+    var previousMenuItem : MenuItem? = null
 
-    /*Life-cycle method*/
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_dashboard)
-
-        /*Initialising the textview and linking it with the textview created in XML*/
-        txtData = findViewById(R.id.txtData)
-
-        btnSignOut = findViewById(R.id.btnSignOut)
-
-        btnSignOut.setOnClickListener {
-            signOut()
-        }
         auth = Firebase.auth
 
+        drawerLayout = findViewById(R.id.drawerLayout)
+        coordinatorLayout = findViewById(R.id.coordinatorLayout)
+        frame = findViewById(R.id.frame)
+        toolbar = findViewById(R.id.toolbar)
+        navigationView = findViewById(R.id.navigationView)
 
-        /*Checking whether any data was received through the intent or not*/
-        if (intent != null) {
 
-            /*Fetching the details from the intent*/
-            val details = intent.getBundleExtra("details")
+        setUPToolbar()
+        openDashboard()
 
-            /*Getting the value of data from the bundle object*/
-            val data = details?.getString("data")
+        val actionBarDrawerToggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
 
-            /*Checking the location from which data was sent*/
-            if (data == "login") {
-                /*Creating the text to be displayed*/
-                val text = "Mobile Number : ${details?.getString("mobile")} \n " +
-                        "Password : ${details?.getString("password")}"
-                txtData.text = text
+        navigationView.setNavigationItemSelectedListener {
+
+            if (previousMenuItem != null)
+            {
+                previousMenuItem?.isChecked = false
+            }
+            it.isCheckable = true
+            it.isChecked = true
+            previousMenuItem = it
+
+            when(it.itemId)
+            {
+                R.id.dashboard -> {
+                    openDashboard()
+                    drawerLayout.closeDrawers()
+                }
+
+
+                R.id.favourites -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame,  FavouritesFragment())
+                        .commit()
+                    supportActionBar?.title ="Favorites"
+                    drawerLayout.closeDrawers()
+                }
+                R.id.profile -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame,  ProfileFragment())
+                        .commit()
+                    supportActionBar?.title ="Profile"
+                    drawerLayout.closeDrawers()
+                }
+                R.id.aboutApp-> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame,  AboutAppFragment())
+                        .commit()
+                    supportActionBar?.title ="AboutApp"
+                    drawerLayout.closeDrawers()
+                }
+
+
+                R.id.signOut -> {
+                    signOut()
+
+                }
+
+
+
+
             }
 
-            if (data == "register") {
-                val text = " Name : ${details?.getString("name")} \n " +
-                        "Mobile Number : ${details?.getString("mobile")} \n " +
-                        "Password : ${details?.getString("password")} \n " +
-                        "Address: ${details?.getString("address")}"
-                txtData.text = text
-            }
 
-            if (data == "forgot") {
-                val text = "Mobile Number : ${details?.getString("mobile")} \n " +
-                        "Email : ${details?.getString("email")}"
-                txtData.text = text
-            }
 
-        } else {
-            /*No data was received through the intent*/
-            txtData.text = "No data received!!"
+
+            return@setNavigationItemSelectedListener true
         }
 
+
     }
+
+    fun setUPToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Toolbar Title"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+
+        if(id == android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun openDashboard(){
+
+        val fragment = DashboardFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame, fragment)
+        transaction.commit()
+
+        supportActionBar?.title ="Dashboard"
+
+        navigationView.setCheckedItem(R.id.dashboard)
+
+
+    }
+
+    override fun onBackPressed()
+    {
+        val frag = supportFragmentManager.findFragmentById(R.id.frame)
+
+        when(frag)
+        { !is DashboardFragment -> openDashboard()
+            else -> super.onBackPressed()
+        }
+    }
+
+
+
     private fun signOut() {
         gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -101,4 +186,14 @@ class DashboardActivity : AppCompatActivity() {
         finish()
         // [END auth_sign_out]
     }
+
+
+
+
+
+
+
+
+
+
 }

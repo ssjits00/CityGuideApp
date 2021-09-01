@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlForgotPass"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminLogin">
+
+
+    <RelativeLayout
+        android:id="@+id/rlContentMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CFEBFF
+">
+
+        <ImageView
+            android:id="@+id/imgAppLogo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/app_logo" />
+
+
+        <TextView
+            android:id="@+id/txtAdData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin Login"
+            android:layout_marginLeft="130dp"
+
+            android:layout_below="@+id/imgAppLogo"
+            android:textSize="20sp"
+            android:padding="10dp"
+
+            android:textColor="@android:color/black"/>
+
+
+        <EditText
+            android:id="@+id/etAdLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAdData"
+            android:layout_margin="10dp"
+            android:background="@drawable/text_boundary_background"
+            android:hint="User Name"
+            android:inputType="text"
+
+            android:maxLines="1"
+            android:padding="10dp"
+            android:layout_marginTop="40dp"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etAdPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etAdLogin"
+            android:layout_margin="10dp"
+            android:background="@drawable/text_boundary_background"
+            android:hint="Password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/btnAdNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etAdPassword"
+            android:layout_margin="10dp"
+            android:background="#0000FF"
+            android:padding="10dp"
+            android:text="Login"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

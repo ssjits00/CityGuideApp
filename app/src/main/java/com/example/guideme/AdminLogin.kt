@@ -3,9 +3,9 @@ package com.example.guideme
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class UserName : AppCompatActivity() {
+class AdminLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_name)
+        setContentView(R.layout.activity_admin_login)
     }
 }

@@ -9,10 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.guideme.DashboardActivity
 import com.example.guideme.ForgotPasswordActivity
 import com.example.guideme.R
@@ -46,11 +43,12 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var txtForgotPassword: TextView
+    lateinit var txtAdminLogin :TextView
     private val fAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var btnGoogleSignIn: Button
+    private lateinit var btnGoogleSignIn: ImageButton
 
     companion object {
 
@@ -76,6 +74,8 @@ class LoginActivity : AppCompatActivity() {
         login = findViewById(R.id.btnLogin)
         auth = FirebaseAuth.getInstance()
         btnGoogleSignIn = findViewById(R.id.googleSignIn)
+        txtAdminLogin = findViewById(R.id.txtAdminLogin)
+
 
         createRequest()
         auth = Firebase.auth
@@ -83,6 +83,9 @@ class LoginActivity : AppCompatActivity() {
         /*Handling the clicks using the setOnClickListener method*/
         txtForgotPassword.setOnClickListener {
             startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))
+        }
+        txtAdminLogin.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, AdminLogin::class.java))
         }
 
         registerYourself.setOnClickListener {
