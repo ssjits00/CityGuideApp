@@ -76,15 +76,16 @@
 
 
         <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/google"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/common_google_signin_btn_icon_dark_focused"
             android:background="#CFEBFF"
+            android:layout_marginLeft="170dp"
 
 
 
             android:id="@+id/googleSignIn"
-            ></ImageButton>
+            />
 
 
     <RelativeLayout
@@ -115,6 +116,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login as Admin"
+            android:layout_marginBottom="500dp"
+
 
             android:layout_marginLeft="125dp"
             android:layout_marginTop="20dp"

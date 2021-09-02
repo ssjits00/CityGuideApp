@@ -188,12 +188,9 @@ class BusinessSignUp : AppCompatActivity() {
             etPassword.requestFocus()
             return
         }
-        var p1 = etConfirmPassword.text.toString()
-        var p2 = etConfirmPassword.text.toString()
-        if (p1!=p2) {
-
-            etPassword.error = "Password didn't Match"
-            etPassword.requestFocus()
+        if (!etPassword.text.toString().equals(etConfirmPassword.text.toString())) {
+            etConfirmPassword.error = "Password didn't match."
+            etConfirmPassword.requestFocus()
             return
         }
 

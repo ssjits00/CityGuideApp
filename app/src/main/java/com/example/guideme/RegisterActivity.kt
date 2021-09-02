@@ -112,11 +112,18 @@ etEmail.requestFocus()
 return
 }
 
-if (etPassword.text.toString().isEmpty()) {
-etPassword.error = "Please enter password"
-etPassword.requestFocus()
+if (!etPassword.text.toString().equals(etConfirmPassword.text.toString())) {
+etConfirmPassword.error = "Password didn't match."
+etConfirmPassword.requestFocus()
 return
 }
+
+
+
+
+
+
+
 
 fAuth.createUserWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
 .addOnCompleteListener(this) { task ->
