@@ -118,7 +118,7 @@ class BusinessSignUp : AppCompatActivity() {
 
 
               rootNode = FirebaseDatabase.getInstance()
-    reference = rootNode.getReference("BusinessUsers");
+    reference = rootNode.getReference("users");
 
 
             val firstName: String = etName.getText().toString()

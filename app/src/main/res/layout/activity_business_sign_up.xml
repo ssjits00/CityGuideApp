@@ -6,9 +6,7 @@
     android:fillViewport="true"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -358,13 +356,13 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dip"
+                    android:layout_marginLeft="12dip"
                     android:layout_marginTop="6dip"
-                    android:layout_marginRight="12dip"
+                    android:layout_marginRight="1dip"
                     android:layout_weight="5"
                     android:background="@drawable/text_boundary_background"
                     android:drawablePadding="3dp"
-                    android:hint="Confirm Password"
+                    android:hint="Password"
                     android:inputType="text"
                     android:maxLength="30"
                     android:padding="10dip"
@@ -390,6 +388,13 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LPasswardlayout"
+                android:orientation="vertical">
+
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
@@ -397,14 +402,16 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginLeft="12dip"
                 android:layout_marginRight="12dip"
-                android:background="#000000"
+                android:background="#F5B041"
                 android:text="Register"
                 android:textAllCaps="false"
-                android:layout_alignParentBottom="true"
+               android:layout_marginTop="50dp"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white"/>
+        </LinearLayout>
         </RelativeLayout>
 
-    </RelativeLayout>
+
+
 </ScrollView>

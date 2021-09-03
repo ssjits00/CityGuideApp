@@ -1,17 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <LinearLayout
+            android:background="@drawable/pnk"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/app_logo"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wiliam Snoe"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="21sp"/>
+        </LinearLayout>
 
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/txtAboutApp"
+    <LinearLayout
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:text="about_app_fragment"
-        android:padding="10dp"
-        android:textSize="20sp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp">
 
-</RelativeLayout>
+
+        <EditText
+            android:id="@+id/etpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LNamelayout"
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="6dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="Enter Name"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+        <EditText
+            android:id="@+id/etpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="6dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="Email"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+        <EditText
+            android:id="@+id/etpMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="Mobile Number"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+
+        <EditText
+            android:id="@+id/etpUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="User Name"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+        <EditText
+            android:id="@+id/etpAdress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="Adress"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+
+        <Button
+            android:id="@+id/etpUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="50dip"
+            android:layout_marginRight="12dip"
+
+            android:maxLines="1"
+            android:hint="Update"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

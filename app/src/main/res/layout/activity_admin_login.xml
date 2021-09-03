@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/etAdPassword"
             android:layout_margin="10dp"
-            android:background="#0000FF"
+            android:background="#F5B041"
             android:padding="10dp"
             android:text="Login"
             android:textAppearance="?android:attr/textAppearanceLarge"
