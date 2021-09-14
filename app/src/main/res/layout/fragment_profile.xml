@@ -21,13 +21,13 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/app_logo"/>
-            <TextView
+            <EditText
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wiliam Snoe"
-                android:textColor="#fff"
+                android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
         </LinearLayout>
@@ -40,6 +40,25 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginTop="45dp">
+
+
+
+        <EditText
+            android:id="@+id/etpUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_boundary_background"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="12dip"
+            android:drawablePadding="3dp"
+            android:maxLines="1"
+            android:hint="User Name"
+            android:inputType="text"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
 
 
         <EditText
@@ -66,7 +85,6 @@
             android:id="@+id/etpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/text_boundary_background"
             android:layout_marginLeft="12dip"
             android:layout_marginTop="6dip"
@@ -86,7 +104,6 @@
             android:id="@+id/etpMobileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/text_boundary_background"
             android:layout_marginLeft="12dip"
             android:layout_marginTop="10dip"
@@ -103,23 +120,7 @@
 
 
 
-        <EditText
-            android:id="@+id/etpUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:background="@drawable/text_boundary_background"
-            android:layout_marginLeft="12dip"
-            android:layout_marginTop="10dip"
-            android:layout_marginRight="12dip"
-            android:drawablePadding="3dp"
-            android:maxLines="1"
-            android:hint="User Name"
-            android:inputType="text"
-            android:padding="10dip"
-            android:singleLine="true"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"/>
 
 
 
@@ -127,14 +128,13 @@
             android:id="@+id/etpAdress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/text_boundary_background"
             android:layout_marginLeft="12dip"
             android:layout_marginTop="10dip"
             android:layout_marginRight="12dip"
             android:drawablePadding="3dp"
             android:maxLines="1"
-            android:hint="Adress"
+            android:hint="Address"
             android:inputType="text"
             android:padding="10dip"
             android:singleLine="true"
@@ -148,28 +148,17 @@
             android:id="@+id/etpUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@color/colorPrimary"
             android:layout_marginLeft="12dip"
             android:layout_marginTop="50dip"
             android:layout_marginRight="12dip"
 
+
+
             android:maxLines="1"
             android:hint="Update"
             android:textColor="@android:color/black"
             android:textSize="16sp"/>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </LinearLayout>
